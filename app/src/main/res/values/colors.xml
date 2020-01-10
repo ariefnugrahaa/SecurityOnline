@@ -6,6 +6,7 @@
     <color name="purple">#1f2946</color>
     <color name="yellow">#F7BC13</color>
     <color name="white">#F2F1D3</color>
+    <color name="red">#FF6F5E</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#F2F1D3</color>
 

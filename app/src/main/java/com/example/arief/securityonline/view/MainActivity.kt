@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> viewpager.currentItem = 0
                 R.id.navigation_dashboard -> viewpager.currentItem = 1
-                R.id.navigation_notifications -> viewpager.currentItem = 2
+                R.id.notifcation -> viewpager.currentItem = 2
+                R.id.userprofile -> viewpager.currentItem = 3
             }
             false
         }
@@ -56,10 +57,10 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager)
         adapter.addFragment(HomeFragment())
         adapter.addFragment(DashboardFragment())
+        adapter.addFragment(NotificationFragment())
         adapter.addFragment(UserFragment())
         viewPager.adapter = adapter
     }
-
 
     @Suppress("DEPRECATION")
     inner class ViewPagerAdapter(manager: FragmentManager?) : FragmentPagerAdapter(manager!!) {

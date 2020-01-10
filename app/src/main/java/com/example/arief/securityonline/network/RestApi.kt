@@ -33,7 +33,7 @@ class RestApi {
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl("http://103.86.161.20:8889/")
+                .baseUrl("http://10.0.2.2:8889/")
                 .client(client)
                 .build()
             return retrofit.create(RetrofitService::class.java)

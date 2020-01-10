@@ -22,8 +22,6 @@ class LoginActivity : AppCompatActivity(), iLogin {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val username = et_email.text.toString()
-        val password = et_password.text.toString()
 
         btn_signup.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -31,6 +29,9 @@ class LoginActivity : AppCompatActivity(), iLogin {
         }
 
         btn_login.setOnClickListener {
+            val username = et_email.text.toString()
+            val password = et_password.text.toString()
+
             presenter.postData(this, username, password)
         }
 
@@ -45,7 +46,7 @@ class LoginActivity : AppCompatActivity(), iLogin {
             toast("Login Success")
             SharedPrefManager.getInstance(applicationContext).saveToken(q.responseData.token)
 //            SharedPrefManager.getInstance(applicationContext).saveUser(q.userProfile.fullName.toString())
-//            SharedPrefManager.getInstance(applicationContext).saveJabatan(q.userProfile.jabatan.toString())
+//            SharedPrefManager.getInstance(applicationContext).saveJabatan(q.userProfile.jabatann.toString())
 
             val intent = Intent(this, MainActivity::class.java).apply {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

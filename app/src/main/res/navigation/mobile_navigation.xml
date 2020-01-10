@@ -18,8 +18,13 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/userprofile"
         android:name="com.example.arief.securityonline.view.UserFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/notification"
+        android:name="com.example.arief.securityonline.view.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notif" />
 </navigation>
