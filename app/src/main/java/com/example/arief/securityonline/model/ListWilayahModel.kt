@@ -15,7 +15,7 @@ data class ListWilayahModel(
 ) {
     data class ResponseData(
         @SerializedName("IDWilayah")
-        var iDWilayah: Long, // 3507290009
+        var iDWilayah: Float, // 3507290009
         @SerializedName("Nama")
         var nama: String // TAWANGARGO
     )

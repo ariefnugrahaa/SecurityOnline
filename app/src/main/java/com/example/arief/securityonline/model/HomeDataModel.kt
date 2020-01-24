@@ -17,7 +17,7 @@ data class HomeDataModel(
         @SerializedName("Catatan")
         var catatan: String, // test
         @SerializedName("Foto")
-        var foto: List<String>,
+        var foto: List<String>?,
         @SerializedName("IDLaporan")
         var iDLaporan: Int, // 1
         @SerializedName("IDMotif")

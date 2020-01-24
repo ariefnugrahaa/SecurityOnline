@@ -8,6 +8,8 @@ class SharedPrefManager private constructor(private val mCtx: Context){
         private val SHARED_PREF_NAME = "my_shared_pref"
         private val SHARED_PREF_USER = "my_shared_user"
         private val SHARED_PREF_JABATAN = "my_shared_jabatan"
+        private val SHARED_PREF_PASSWORD = "my_shared_password"
+        private val SHARED_PREF_ID = "my_shared_id"
 
         private var mInstance:SharedPrefManager? = null
 
@@ -39,26 +41,55 @@ class SharedPrefManager private constructor(private val mCtx: Context){
         editor.apply()
     }
 
-    fun saveJabatan(jabatan: String){
+    fun saveNopeg(jabatan: String){
         val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_JABATAN, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("Jabatan", jabatan)
         editor.apply()
     }
 
+
+    fun saveId(id:String){
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("id", id)
+        editor.apply()
+    }
+
+    fun savePassword(password: String){
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_PASSWORD, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("Password", password)
+        editor.apply()
+    }
+
+
+
+
+    fun getValueId(KEY_NAME: String): String? {
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(KEY_NAME, "id")
+    }
+
+
     fun getValueToken(KEY_NAME: String): String? {
-        var sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         return sharedPreferences.getString(KEY_NAME, "tokenAkses")
     }
 
     fun getValueUser(KEY_NAME: String): String? {
-        var sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_USER, Context.MODE_PRIVATE)
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_USER, Context.MODE_PRIVATE)
         return sharedPreferences.getString(KEY_NAME, "Username")
     }
 
-    fun getValueStringJabatan(KEY_NAME: String): String? {
-        var sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_JABATAN, Context.MODE_PRIVATE)
+    fun getValueStringNopeg(KEY_NAME: String): String? {
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_JABATAN, Context.MODE_PRIVATE)
         return sharedPreferences.getString(KEY_NAME, "Jabatan")
+    }
+
+    fun getValuePassword(KEY_NAME: String):String? {
+        val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_PASSWORD, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(KEY_NAME, "Password")
     }
 
     fun clear():Boolean{

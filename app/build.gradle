@@ -21,6 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
 }
 
 dependencies {
@@ -54,6 +63,15 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation "org.jetbrains.anko:anko-design:$anko_version" // For SnackBars
 
+    // Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+
+    // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+
+    // Coroutine listeners for Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
     //Retrofit
@@ -61,6 +79,24 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
+
+    //ModifyImageView
+    implementation 'com.joooonho:selectableroundedimageview:1.0.1'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // Lottie Animation Library
+    implementation 'com.airbnb.android:lottie:3.3.0'
+
+    implementation 'pub.devrel:easypermissions:2.0.1'
+
+    implementation 'com.shreyaspatil:MaterialDialog:2.0'
+
+    implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.2'
+
+    implementation 'br.com.simplepass:loading-button-android:2.1.5'
+
+    implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.7'
 
 
 }

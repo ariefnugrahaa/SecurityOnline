@@ -8,7 +8,8 @@
         <item name="colorAccent">@color/purple</item>
         <item name="colorControlNormal">#F2F1D3</item>
         <item name="colorControlActivated">#F2F1D3</item>
-        <item name="colorControlHighlight">#F2F1D3</item>
+        <item name="colorControlHighlight">@color/purple</item>
+        <item name="android:textColorHint">@color/purple</item>
     </style>
 
     <style name="Test" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -21,5 +22,17 @@
         <item name="boxStrokeColor">#fff</item>
         <item name="boxStrokeWidth">2dp</item>
     </style>
+
+<!--    <style name="ToolbarTheme">-->
+<!--        <item name="android:textColorHint">@color/white_opacity_60</item>-->
+<!--    </style>-->
+
+    <style name="AppTheme." parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple</item>
+        <item name="colorAccent">@color/purple</item>
+
+    </style>
+
 
 </resources>

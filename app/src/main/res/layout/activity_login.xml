@@ -115,22 +115,35 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/ln_rememberme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:text="Remember Me ?"
-            android:fontFamily="@font/proximanova"
-            android:textColor="@color/white"/>
+            android:orientation="horizontal"
+            android:layout_weight="6">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="Remember Me ?"
+                android:fontFamily="@font/proximanova"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+
 
         <TextView
+            android:id="@+id/tv_forgetpassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

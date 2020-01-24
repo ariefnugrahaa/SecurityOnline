@@ -9,7 +9,7 @@ data class ListRigModel(
     @SerializedName("responseCode")
     var responseCode: String, // 00
     @SerializedName("responseData")
-    var responseData: List<ResponseData>,
+    var responseData: List<ResponseData>?,
     @SerializedName("responseMessage")
     var responseMessage: String // Get List Rig Success
 ) {

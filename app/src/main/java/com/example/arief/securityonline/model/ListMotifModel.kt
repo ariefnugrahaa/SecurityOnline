@@ -9,7 +9,7 @@ data class ListMotifModel(
     @SerializedName("responseCode")
     var responseCode: String, // 00
     @SerializedName("responseData")
-    var responseData: List<ResponseData>,
+    var responseData: List<ResponseData>?,
     @SerializedName("responseMessage")
     var responseMessage: String // Get List Category Success
 ) {
@@ -19,6 +19,8 @@ data class ListMotifModel(
         @SerializedName("IDKategori")
         var iDKategori: Int, // 1
         @SerializedName("IDMotif")
-        var iDMotif: Int // 10
+        var iDMotif: Int, // 10
+        @SerializedName("KategoriMotif")
+        var kategoriMotif: String // 10
     )
 }

@@ -15,7 +15,7 @@ data class ListKabupatenModel(
 ) {
     data class ResponseData(
         @SerializedName("IDKabKota")
-        var iDKabKota: Int, // 9435
+        var iDKabKota: Float, // 9435
         @SerializedName("Nama")
         var nama: String // KABUPATEN INTAN JAYA
     )

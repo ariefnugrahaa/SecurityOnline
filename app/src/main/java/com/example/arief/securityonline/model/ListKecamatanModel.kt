@@ -15,7 +15,7 @@ data class ListKecamatanModel(
 ) {
     data class ResponseData(
         @SerializedName("IDKecamatan")
-        var iDKecamatan: Int, // 3507330
+        var iDKecamatan: Float, // 3507330
         @SerializedName("Nama")
         var nama: String // KASEMBON
     )
