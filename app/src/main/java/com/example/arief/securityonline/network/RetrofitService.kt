@@ -1,5 +1,6 @@
 import com.pertamina.pdsi.securityonline.Model.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -7,6 +8,8 @@ interface RetrofitService {
 
     companion object {
         const val POST_LOGIN = "/api/auth/login"
+
+        const val POST_REGISTER = "/api/auth/signup"
 
         // home
         const val GET_LATEST = "/api/reports/latest"
@@ -47,7 +50,11 @@ interface RetrofitService {
     fun loginUser(@Field("username") username: String,
                   @Field("password") password: String): Call<LoginModel>
 
+    @POST(POST_REGISTER)
+    fun postRegister(@Body params: MutableMap<String, String>): Call<LoginModel>
 
+    @GET(GET_PROFIL)
+    fun getProfile(): Call<UserDataModel>
 
     @GET(GET_LATEST)
     fun getLatest(): Call<HomeDataModel>
@@ -56,11 +63,7 @@ interface RetrofitService {
     fun getMyreport(@Query("page")page: String): Call<HomeDataModel>
 
 
-
-
-    @GET(GET_PROFIL)
-    fun getProfile(): Call<UserDataModel>
-
+    //Spinner
     @GET(GET_CATEGORY)
     fun getCategory(): Call<ListCategoryModel>
 
@@ -87,6 +90,7 @@ interface RetrofitService {
 
     @GET(GET_WILAYAH)
     fun getWilayah(@Query("kode")kode: String): Call<ListWilayahModel>
+    //Spinner
 
     @Multipart
     @POST(POST_WRITE)

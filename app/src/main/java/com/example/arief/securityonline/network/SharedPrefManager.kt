@@ -64,8 +64,6 @@ class SharedPrefManager private constructor(private val mCtx: Context){
     }
 
 
-
-
     fun getValueId(KEY_NAME: String): String? {
         val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_ID, Context.MODE_PRIVATE)
         return sharedPreferences.getString(KEY_NAME, "id")

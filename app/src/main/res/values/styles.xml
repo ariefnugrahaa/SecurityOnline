@@ -31,7 +31,59 @@
         <item name="colorPrimary">@color/purple</item>
         <item name="colorPrimaryDark">@color/purple</item>
         <item name="colorAccent">@color/purple</item>
+    </style>
 
+
+    <style name="loginSuccess">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <!--        <item name="stFont">@font/adamina</item>-->
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#46b965</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">10dp</item>
+        <!--        <item name="stStrokeColor">#000000</item>-->
+        <item name="stIconStart">@drawable/ic_check</item>
+        <item name="stIconEnd">@drawable/smile</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <!--        <item name="stGravity">bottom</item> top or center-->
+        <item name="stRadius">20dp</item>
+    </style>
+
+    <style name="loginFail">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fb4554</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">10dp</item>
+        <item name="stIconStart">@drawable/ic_close</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">20dp</item>
+    </style>
+
+    <style name="ServerError">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fb4554</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">10dp</item>
+        <item name="stIconStart">@drawable/whiteglobe</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">20dp</item>
+    </style>
+
+    <style name="NoDataFound">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#fb4554</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">10dp</item>
+        <item name="stIconStart">@drawable/whiteglobe</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">20dp</item>
     </style>
 
 

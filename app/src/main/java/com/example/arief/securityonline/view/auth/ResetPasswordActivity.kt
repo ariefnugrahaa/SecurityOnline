@@ -1,9 +1,8 @@
-package com.example.arief.securityonline.view
+package com.example.arief.securityonline.view.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.arief.securityonline.R
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_reset_password.*
 
 class ResetPasswordActivity : AppCompatActivity() {

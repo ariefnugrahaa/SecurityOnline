@@ -12,11 +12,11 @@ class CustomInterceptor(contexts: Context):Interceptor {
         val token =  SharedPrefManager.getInstance(context).getValueToken("tokenAkses")
         var request = chain.request()
         request = request.newBuilder()
-            ?.addHeader("Content-Type", "application/json")
-            ?.addHeader("Content-Type", "multipart/form-data")
-            ?.addHeader("Content-Type", "application/x-www-form-urlencoded")
-            ?.addHeader("Accept", "application/json")
-            ?.addHeader("Authentication", token.toString()).build()
+            .addHeader("Content-Type", "application/json")
+            .addHeader("Content-Type", "multipart/form-data")
+            .addHeader("Content-Type", "application/x-www-form-urlencoded")
+            .addHeader("Accept", "application/json")
+            .addHeader("Authentication", token.toString()).build()
         return chain.proceed(request)
     }
 }

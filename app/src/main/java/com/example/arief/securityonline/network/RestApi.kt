@@ -13,8 +13,7 @@ class RestApi {
         fun create(context: Context): RetrofitService {
 
             val httpLoggingInterceptor = HttpLoggingInterceptor()
-            val interceptor =
-                httpLoggingInterceptor.apply {
+            val interceptor = httpLoggingInterceptor.apply {
                     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
                 }
 
@@ -27,9 +26,7 @@ class RestApi {
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .build()
 
-            val gson = GsonBuilder()
-                .setLenient()
-                .create()
+            val gson = GsonBuilder().setLenient().create()
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))

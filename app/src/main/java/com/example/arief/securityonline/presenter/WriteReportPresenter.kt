@@ -4,10 +4,9 @@ import RestApi
 import android.content.Context
 import com.example.arief.securityonline.`interface`.BaseInterface
 import com.example.arief.securityonline.extension.sharedPreferenceUser
-import com.example.arief.securityonline.view.HomeFragment
-import com.example.arief.securityonline.view.HomeFragment.Companion.fileImage1
+import com.example.arief.securityonline.view.bottomnavigation.HomeFragment
+import com.example.arief.securityonline.view.bottomnavigation.HomeFragment.Companion.fileImage1
 import com.pertamina.pdsi.securityonline.Model.WriteReportModel
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

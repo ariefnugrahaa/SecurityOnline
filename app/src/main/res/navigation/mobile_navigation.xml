@@ -7,34 +7,34 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.arief.securityonline.view.HomeFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.arief.securityonline.view.ReportFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.ReportFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_report" />
 
     <fragment
         android:id="@+id/userprofile"
-        android:name="com.example.arief.securityonline.view.UserFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.UserFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/notification"
-        android:name="com.example.arief.securityonline.view.NotificationFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notif" />
     <fragment
         android:id="@+id/getAllFragment"
-        android:name="com.example.arief.securityonline.view.LatestReportFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.LatestReportFragment"
         android:label="fragment_get_all"
         tools:layout="@layout/fragment_latest_report" />
     <fragment
         android:id="@+id/myReportFragment"
-        android:name="com.example.arief.securityonline.view.MyReportFragment"
+        android:name="com.example.arief.securityonline.view.bottomnavigation.MyReportFragment"
         android:label="fragment_my_report"
         tools:layout="@layout/fragment_my_report" />
 </navigation>

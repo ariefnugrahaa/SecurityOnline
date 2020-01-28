@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.view
+package com.example.arief.securityonline.view.bottomnavigation
 
 import android.os.Bundle
 import android.view.*
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.arief.securityonline.R
+import com.example.arief.securityonline.view.bottomnavigation.LatestReportFragment
+import com.example.arief.securityonline.view.bottomnavigation.MyReportFragment
 import kotlinx.android.synthetic.main.fragment_report.*
 import org.jetbrains.anko.support.v4.act
 
@@ -25,8 +27,10 @@ class ReportFragment : Fragment() {
 
 
         val adapter = MyViewPagerAdapterr(act.supportFragmentManager)
-        adapter.addFragment(MyReportFragment(), "My Report")
-        adapter.addFragment(LatestReportFragment(), "All Report")
+        adapter.addFragment(
+            MyReportFragment(), "My Report")
+        adapter.addFragment(
+            LatestReportFragment(), "All Report")
         viewPagerr.adapter = adapter
         tabss.setupWithViewPager(viewPagerr)
 

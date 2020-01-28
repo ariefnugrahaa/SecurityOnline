@@ -2,7 +2,6 @@ package com.example.arief.securityonline.presenter
 
 import android.content.Context
 import com.example.arief.securityonline.`interface`.BaseInterface
-import com.example.arief.securityonline.view.HomeFragment
 import com.pertamina.pdsi.securityonline.Model.*
 import retrofit2.Call
 import retrofit2.Response

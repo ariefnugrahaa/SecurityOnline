@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.view
+package com.example.arief.securityonline.view.bottomnavigation
 
 
 import android.os.Bundle
@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.example.arief.securityonline.R
 import com.example.arief.securityonline.`interface`.BaseInterface
 import com.example.arief.securityonline.adapter.RVMyReport
 import com.example.arief.securityonline.presenter.MyReportPresenter
 import com.pertamina.pdsi.securityonline.Model.HomeDataModel
 import kotlinx.android.synthetic.main.fragment_my_report.*
+import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.toast
 
 /**
@@ -33,10 +33,12 @@ class MyReportFragment : Fragment(), BaseInterface.IMyReport {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         rvMyReport = RVMyReport { position -> null }
+        presenter.getMyReport(act.applicationContext, "admin4")
 
     }
 
     override fun onDataCompleteMyReport(q: HomeDataModel) {
+
         loadData = q
 
         rv_myreport.apply {
@@ -49,5 +51,4 @@ class MyReportFragment : Fragment(), BaseInterface.IMyReport {
     override fun onErrorMyReport(t: Throwable) {
         toast("Tidak Bisa Mendapatkan Report")
     }
-
 }

@@ -56,8 +56,9 @@ dependencies {
     def retrofit_version = '2.4.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
@@ -74,11 +75,6 @@ dependencies {
     implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
-    //Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 
     //ModifyImageView
     implementation 'com.joooonho:selectableroundedimageview:1.0.1'
@@ -88,6 +84,7 @@ dependencies {
     // Lottie Animation Library
     implementation 'com.airbnb.android:lottie:3.3.0'
 
+    //Permission Camera
     implementation 'pub.devrel:easypermissions:2.0.1'
 
     implementation 'com.shreyaspatil:MaterialDialog:2.0'
@@ -97,6 +94,18 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:2.1.5'
 
     implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.7'
+
+
+    //Toast
+    implementation 'com.muddzdev:styleabletoast:2.2.2'
+
+    //Snackbar
+    implementation 'com.github.matecode:Snacky:1.1.4'
+
+    //Button Loading
+    implementation 'br.com.simplepass:loading-button-android:2.1.5'
+
+    implementation 'com.github.matecode:Snacky:1.1.4'
 
 
 }

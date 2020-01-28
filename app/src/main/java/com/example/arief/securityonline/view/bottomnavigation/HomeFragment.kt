@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.view
+package com.example.arief.securityonline.view.bottomnavigation
 
 import android.content.Context
 import android.content.Intent
@@ -23,7 +23,6 @@ import com.example.arief.securityonline.presenter.SpinnerPresenter
 import com.example.arief.securityonline.presenter.WriteReportPresenter
 import com.pertamina.pdsi.securityonline.Model.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import okhttp3.RequestBody
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.support.v4.toast

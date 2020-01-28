@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    tools:context=".view.LatestReportFragment">
+    tools:context=".view.bottomnavigation.LatestReportFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_searchview"
@@ -41,13 +41,13 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:id="@+id/rv_laporan"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_above="@id/viewoffset"-->
-    <!--        android:layout_below="@id/cv_searchview" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/rv_latest_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/viewoffset"
+            android:layout_below="@id/cv_searchview" />
 
     <View
         android:id="@+id/viewoffset"

@@ -9,6 +9,11 @@ class BaseInterface {
         fun onDataErrorLogin(e: Throwable)
     }
 
+    interface IRegister{
+        fun onDataCompleteRegister(q: LoginModel)
+        fun onDataErrorLogin(e: Throwable)
+    }
+
     interface IWritePresenter {
         fun onDataCompleteWriteReport(q: WriteReportModel)
         fun onDataErrorReport(e: Throwable)

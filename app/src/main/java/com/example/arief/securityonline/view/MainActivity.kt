@@ -13,6 +13,11 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.arief.securityonline.R
 import com.example.arief.securityonline.extension.openingDialog
 import com.example.arief.securityonline.network.SharedPrefManager
+import com.example.arief.securityonline.view.auth.LoginActivity
+import com.example.arief.securityonline.view.bottomnavigation.HomeFragment
+import com.example.arief.securityonline.view.bottomnavigation.NotificationFragment
+import com.example.arief.securityonline.view.bottomnavigation.ReportFragment
+import com.example.arief.securityonline.view.bottomnavigation.UserFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -64,13 +69,18 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(
             supportFragmentManager)
-        adapter.addFragment(HomeFragment())
-        adapter.addFragment(ReportFragment())
-        adapter.addFragment(NotificationFragment())
-        adapter.addFragment(UserFragment())
-
-
-
+        adapter.addFragment(
+            HomeFragment()
+        )
+        adapter.addFragment(
+            ReportFragment()
+        )
+        adapter.addFragment(
+            NotificationFragment()
+        )
+        adapter.addFragment(
+            UserFragment()
+        )
         viewPager.adapter = adapter
     }
 
@@ -100,8 +110,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         } catch (e: Exception) { }
-
-
     }
 }
 

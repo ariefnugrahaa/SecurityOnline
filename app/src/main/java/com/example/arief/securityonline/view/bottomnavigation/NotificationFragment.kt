@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.view
+package com.example.arief.securityonline.view.bottomnavigation
 
 
 import android.os.Bundle
