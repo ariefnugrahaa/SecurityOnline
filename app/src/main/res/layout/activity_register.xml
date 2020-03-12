@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/purple"
     android:orientation="vertical"
-    tools:context=".view.auth.RegisterActivity"
+    tools:context=".presentation.auth.register.RegisterActivity"
     android:padding="10dp">
 
     <ScrollView
@@ -55,6 +55,7 @@
                 android:layout_marginHorizontal="10dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registerusername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -78,6 +79,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registeremail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -100,6 +102,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registernamalengkap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -107,7 +110,7 @@
                     app:errorEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_register_nama"
+                        android:id="@+id/et_register_namalengkap"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
@@ -122,6 +125,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registernopek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -143,6 +147,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registerjabatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -164,6 +169,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registerperusahaan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -185,6 +191,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registerlokasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -207,6 +214,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_registerpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/white"
@@ -229,28 +237,28 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/white"
-                    style="@style/LoginTextInputLayoutStyle"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@color/white"
-                    app:errorEnabled="true">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColorHint="@color/white"-->
+<!--                    style="@style/LoginTextInputLayoutStyle"-->
+<!--                    app:passwordToggleEnabled="true"-->
+<!--                    app:passwordToggleTint="@color/white"-->
+<!--                    app:errorEnabled="true">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_repassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:imeOptions="actionDone"
-                        android:textColor="@color/white"
-                        android:drawablePadding="5dp"
-                        android:drawableStart="@drawable/item1edit_password"
-                        android:hint="re-password" />
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/et_repassword"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:inputType="textPassword"-->
+<!--                        android:maxLines="1"-->
+<!--                        android:imeOptions="actionDone"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:drawablePadding="5dp"-->
+<!--                        android:drawableStart="@drawable/item1edit_password"-->
+<!--                        android:hint="re-password" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                     android:id="@+id/btn_register"

@@ -5,16 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.bottomnavigation.MyReportFragment"
+    tools:context=".presentation.home.bottomnavigationbar.report.myreport.MyReportFragment"
     android:background="@color/purple">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_searchview"
+        android:id="@+id/cv_myreport_searchview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginHorizontal="10dp">
 
         <LinearLayout
@@ -27,9 +28,10 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_search_black_24dp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginStart="5dp" />
 
             <EditText
+                android:id="@+id/et_search_myreport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -41,13 +43,29 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_myreport"
-        android:layout_marginTop="10dp"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/viewoffset"
-        android:layout_below="@id/cv_searchview" />
+        android:layout_below="@id/cv_myreport_searchview">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_myreport"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_myreport"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
 
     <View
         android:id="@+id/viewoffset"

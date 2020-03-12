@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.home.bottomnavigationbar.writereport.SuccessReportActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:lottie_fileName="successreport.json"
+            app:lottie_autoPlay="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Success Create Report"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:fontFamily="@font/proximanova"
+            android:textSize="25sp"
+            android:textAlignment="center"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back_success_report"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#0f9b0f"
+            android:text="Kembali Ke Halaman Awal"
+            android:layout_gravity="center"
+            app:icon="@drawable/ic_check"
+            app:cornerRadius="10dp"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

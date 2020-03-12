@@ -3,31 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.arief.securityonline">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="m">
-        <activity android:name=".view.DetailActivity"></activity>
-        <activity android:name=".view.auth.LoginActivity" />
-        <activity android:name=".view.auth.ResetPasswordActivity" />
-        <activity android:name=".view.auth.RegisterActivity" />
+        tools:targetApi="q">
+        <activity android:name=".presentation.home.bottomnavigationbar.report.followup.FollowupActivity"></activity>
         <activity
-            android:name=".view.MainActivity"
-            android:windowSoftInputMode="adjustPan" /> <!-- android:theme="@style/AppTheme." -->
+            android:name=".presentation.IntroActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" />
+        <activity android:name=".presentation.home.bottomnavigationbar.writereport.SuccessReportActivity" />
+        <activity android:name=".presentation.home.bottomnavigationbar.report.listuser.ListRoleActivity" />
+        <activity android:name=".presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity" />
         <activity
-            android:name=".view.SplashScreenActivity"
-            android:label="@string/app_name">
+            android:name=".presentation.auth.login.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".presentation.auth.resetpassword.ResetPasswordActivity" />
+        <activity android:name=".presentation.auth.register.RegisterActivity" />
+        <activity
+            android:name=".presentation.home.MainActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.splash.SplashScreenActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

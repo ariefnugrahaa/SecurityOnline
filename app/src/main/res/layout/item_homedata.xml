@@ -7,9 +7,10 @@
     android:background="@color/purple">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_item_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
         app:cardCornerRadius="10dp">
 
@@ -29,16 +30,16 @@
                     android:layout_centerInParent="true"
                     android:gravity="center_vertical"
                     android:layout_marginTop="15dp"
-                    android:layout_marginStart="8dp">
+                    android:layout_marginStart="10dp">
 
                         <TextView
                             android:id="@+id/linear"
                             android:layout_width="match_parent"
-                            android:layout_height="30sp"
+                            android:layout_height="30dp"
                             android:gravity="center_vertical"
                             android:textSize="13sp"
                             android:text="Dilaporkan"
-                            android:background="@drawable/button_gradient"
+                            android:background="@drawable/red_gradient"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:fontFamily="@font/proximanova" />
@@ -69,7 +70,6 @@
                         android:fontFamily="@font/proximanova"
                         android:textColor="#166138"/>
 
-
                 </LinearLayout>
 
             </RelativeLayout>
@@ -80,21 +80,20 @@
                 android:orientation="horizontal">
 
                 <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_profil1"
-                    android:layout_width="130dp"
+                    android:id="@+id/iv_vh_report"
+                    android:layout_width="120dp"
                     android:layout_height="130dp"
                     android:layout_marginStart="8dp"
-                    android:scaleType="fitCenter"
+                    android:scaleType="center"
+                    android:src="@drawable/jabatann"
                     app:riv_corner_radius="10dp"
-                    app:riv_border_width="1dip"
-                    app:riv_border_color="#333333"
-                    android:src="@drawable/jabatann"/>
+                    app:riv_mutate_background="true"
+                    app:riv_tile_mode="repeat" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp">
 

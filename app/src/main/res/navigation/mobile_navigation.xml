@@ -7,34 +7,34 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.HomeFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.writereport.WriteReportFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_write_report" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.ReportFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.BaseReportFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_report" />
 
     <fragment
         android:id="@+id/userprofile"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.UserFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.user.UserFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/notification"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.NotificationFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.questreport.QuestReportFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notif" />
+        tools:layout="@layout/fragment_quest_report" />
     <fragment
         android:id="@+id/getAllFragment"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.LatestReportFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.allreport.AllReportFragment"
         android:label="fragment_get_all"
-        tools:layout="@layout/fragment_latest_report" />
+        tools:layout="@layout/fragment_all_report" />
     <fragment
         android:id="@+id/myReportFragment"
-        android:name="com.example.arief.securityonline.view.bottomnavigation.MyReportFragment"
+        android:name="com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.myreport.MyReportFragment"
         android:label="fragment_my_report"
         tools:layout="@layout/fragment_my_report" />
 </navigation>

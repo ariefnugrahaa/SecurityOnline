@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".presentation.IntroActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_intro"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="securityonline.json"
+        app:lottie_autoPlay="true"/>
+
+    <TextView
+        android:id="@+id/a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lottie_intro"
+        android:text="Security Online"
+        android:textAlignment="center"
+        android:fontFamily="@font/proximanova"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/btn_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/a"
+        android:text="Lanjut"
+        android:textAlignment="center"
+        android:fontFamily="@font/proximanova"
+        android:textColor="@color/purple"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/purple">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            tools:targetApi="o">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/proximanova"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Report"
+                    android:textSize="25sp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/proximanova"
+                    android:textColor="@color/red"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Pilih Kategori"
+                android:fontFamily="@font/proximanova"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Motif"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_motif"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Project"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_project"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Rig"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_rig"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Status Rig"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_statusrig"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Provinsi"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_provinsi"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Kabupaten / Kota"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_kabupaten"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Kecamatan"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_kecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Pilih Wilayah"
+                android:fontFamily="@font/proximanova" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_wilayah"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownSelector="@color/purple"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Lokasi Sumur"
+                android:fontFamily="@font/proximanova"/>
+
+            <EditText
+                android:id="@+id/et_lokasi_sumur"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:imeOptions="actionDone"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:clickable="true"
+                android:textSize="15sp"
+                android:background="@color/white"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:focusable="true"
+                android:autofillHints="Lokasi Sumur" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Sumber"
+                android:fontFamily="@font/proximanova" />
+
+            <EditText
+                android:id="@+id/et_sumber"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:imeOptions="actionNext"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:clickable="true"
+                android:textSize="15sp"
+                android:background="@color/white"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:focusable="true" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Peristiwa Yang Terjadi"
+                android:fontFamily="@font/proximanova"/>
+
+            <EditText
+                android:id="@+id/et_peristiwa"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:clickable="true"
+                android:textSize="15sp"
+                android:background="@color/white"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:focusable="true" />
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Tindakan Penyelesaian"-->
+<!--                android:fontFamily="@font/proximanova"/>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/et_tindakan_penyelesaian"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="10dp"-->
+<!--                android:inputType="text|textMultiLine"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:clickable="true"-->
+<!--                android:textSize="15sp"-->
+<!--                android:background="@color/white"-->
+<!--                android:textCursorDrawable="@drawable/text_cursor"-->
+<!--                android:focusable="true" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:text="Kerugian Biaya"-->
+<!--                android:fontFamily="@font/proximanova"/>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/et_kerugian_biaya"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="10dp"-->
+<!--                android:inputType="text|textMultiLine"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:clickable="true"-->
+<!--                android:textSize="15sp"-->
+<!--                android:background="@color/white"-->
+<!--                android:textCursorDrawable="@drawable/text_cursor"-->
+<!--                android:focusable="true" />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:text="Catatan"
+                android:fontFamily="@font/proximanova"/>
+
+            <EditText
+                android:id="@+id/et_catatan"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:inputType="text|textMultiLine"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:clickable="true"
+                android:textSize="15sp"
+                android:background="@color/white"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:focusable="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_1"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/addimage"
+                    android:layout_margin="5dp" />
+
+                <ImageView
+                    android:id="@+id/iv_2"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/addimage"
+                    android:layout_margin="5dp" />
+
+                <ImageView
+                    android:id="@+id/iv_3"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/addimage"
+                    android:layout_margin="5dp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/btn_send_report"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginVertical="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/yellow"
+                app:cornerRadius="10dp"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_padding="6dp"
+                android:text="@string/create_report"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
