@@ -5,13 +5,13 @@ import android.content.Context
 class SharedPrefManager private constructor(private val mCtx: Context){
 
     companion object{
-        private val SHARED_PREF_TOKEN = "my_shared_pref"
-        private val SHARED_PREF_NAME = "my_shared_user"
-        private val SHARED_PREF_NOPEG = "my_shared_jabatan"
-        private val SHARED_PREF_PASSWORD = "my_shared_password"
-        private val SHARED_PREF_USERNAME = "my_shared_username"
-        private val SHARED_PREF_ROLE = "my_shared_id"
-        private val SHARED_PREF_EMAIL = "my_shared_email"
+        private const val SHARED_PREF_TOKEN = "my_shared_pref"
+        private const val SHARED_PREF_NAME = "my_shared_user"
+        private const val SHARED_PREF_NOPEG = "my_shared_jabatan"
+        private const val SHARED_PREF_PASSWORD = "my_shared_password"
+        private const val SHARED_PREF_USERNAME = "my_shared_username"
+        private const val SHARED_PREF_ROLE = "my_shared_id"
+        private const val SHARED_PREF_EMAIL = "my_shared_email"
 
         private var mInstance: SharedPrefManager? = null
 

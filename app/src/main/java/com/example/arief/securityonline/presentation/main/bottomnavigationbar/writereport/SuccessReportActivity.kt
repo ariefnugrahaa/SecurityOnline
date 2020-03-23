@@ -1,9 +1,9 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.writereport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.writereport
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.arief.securityonline.R
-import com.example.arief.securityonline.presentation.home.MainActivity
+import com.example.arief.securityonline.presentation.main.MainActivity
 import kotlinx.android.synthetic.main.activity_success_report.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity

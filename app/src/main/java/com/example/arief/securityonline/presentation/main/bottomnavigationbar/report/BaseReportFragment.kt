@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report
 
 import android.os.Bundle
 import android.view.*
@@ -7,9 +7,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.arief.securityonline.R
 import com.example.arief.securityonline.network.database.SharedPrefManager
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.allreport.AllReportFragment
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.myreport.MyReportFragment
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.questreport.QuestReportFragment
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.allreport.AllReportFragment
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.myreport.MyReportFragment
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.questreport.QuestReportFragment
 import kotlinx.android.synthetic.main.fragment_report.*
 import org.jetbrains.anko.support.v4.act
 

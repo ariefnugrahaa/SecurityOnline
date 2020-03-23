@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.questreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.questreport
 
 
 import android.annotation.SuppressLint
@@ -19,10 +19,10 @@ import com.example.arief.securityonline.extension.makeGone
 import com.example.arief.securityonline.extension.makeVisibile
 import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.network.`interface`.BaseInterface
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_EXTRA
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_STATUS_REPORT
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_EXTRA
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_STATUS_REPORT
+import com.example.arief.securityonline.extension.showToastErrorFromServer
 import com.pertamina.pdsi.securityonline.Model.HomeDataModel
 import kotlinx.android.synthetic.main.fragment_quest_report.*
 import org.jetbrains.anko.support.v4.act

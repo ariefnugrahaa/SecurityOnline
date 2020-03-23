@@ -11,15 +11,12 @@ import com.example.arief.securityonline.R
 import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.presentation.IntroActivity
 import com.example.arief.securityonline.presentation.auth.register.RegisterActivity
-import com.example.arief.securityonline.presentation.auth.resetpassword.ResetPasswordActivity
-import com.example.arief.securityonline.presentation.home.MainActivity
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
-import com.example.arief.umkpdconline.common.showToastErrorLogin
-import com.example.arief.umkpdconline.common.showToastSuccessLogin
+import com.example.arief.securityonline.presentation.main.MainActivity
+import com.example.arief.securityonline.extension.showToastErrorFromServer
+import com.example.arief.securityonline.extension.showToastErrorLogin
+import com.example.arief.securityonline.extension.showToastSuccessLogin
 import com.pertamina.pdsi.securityonline.Model.LoginModel
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.newTask
 import org.jetbrains.anko.startActivity
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
@@ -69,12 +66,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                 sharedPreference.saveEmail(q.responseData!!.email)
 
                 btn_login.revertAnimation()
-                startActivity(intentFor<IntroActivity>().newTask())
+                startActivity<IntroActivity>()
                 finish()
-            }
-        } catch (e: Exception) {
 
-        }
+            }
+        } catch (e: Exception) { }
     }
 
     override fun onDataErrorLogin(t: Throwable) {
@@ -83,8 +79,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             btn_login.revertAnimation()
             showToastErrorFromServer("Error From Server")
 
-        } catch (e: Exception) {
-        }
+        } catch (e: Exception) { }
     }
 
     override fun getViewContext(): Context = this
@@ -92,8 +87,6 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     override fun showErrorToast(e: java.lang.Exception) = Unit
 
     private fun isView() {
-
-        tv_forgetpassword.setOnClickListener { startActivity<ResetPasswordActivity>() }
 
         btn_signup.setOnClickListener { startActivity<RegisterActivity>() }
 
@@ -105,8 +98,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }
         })
 
         et_password.addTextChangedListener(object : TextWatcher {

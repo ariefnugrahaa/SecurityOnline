@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home
+package com.example.arief.securityonline.presentation.main
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -21,10 +21,9 @@ import com.example.arief.securityonline.extension.requestLocPermission
 import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.network.service.ConnectionReceiver
 import com.example.arief.securityonline.presentation.auth.login.LoginActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.writereport.WriteReportFragment
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.BaseReportFragment
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.user.UserFragment
-import com.example.arief.securityonline.presentation.splash.SplashScreenActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.writereport.WriteReportFragment
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.BaseReportFragment
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.user.UserFragment
 import com.google.android.gms.location.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,8 +37,6 @@ class MainActivity : AppCompatActivity() , ConnectionReceiver.ConnectReceiverLis
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var recentLocation: String? = ""
     private var mSnackBar: Snackbar? = null
-
-
 
     companion object {
         var latitude:Double? = null
@@ -191,18 +188,15 @@ class MainActivity : AppCompatActivity() , ConnectionReceiver.ConnectReceiverLis
         }
     }
 
-
-
-
-    override fun onNetworkConnectionChanged(isConnected: Boolean) {
-
-    }
+    override fun onNetworkConnectionChanged(isConnected: Boolean) { }
 
     override fun onResume() {
         super.onResume()
         ConnectionReceiver.connectReceiverListener = this
-
     }
 
+    override fun onBackPressed() {
+        finish()
+    }
 }
 

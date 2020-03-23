@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple"
-    tools:context=".presentation.home.bottomnavigationbar.report.allreport.AllReportFragment">
+    tools:context=".presentation.main.bottomnavigationbar.report.allreport.AllReportFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_allreport_searchview"

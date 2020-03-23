@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.arief.securityonline.R
-import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.presentation.auth.login.LoginActivity
-import com.example.arief.securityonline.presentation.home.MainActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

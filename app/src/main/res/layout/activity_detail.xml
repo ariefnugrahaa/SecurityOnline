@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity">
+    tools:context=".presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_detail_useridd"
+                    android:id="@+id/tv_detail_head_peristiwa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ac Rusak"
@@ -134,7 +134,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:layout_marginStart="10dp">
 
@@ -150,18 +150,34 @@
                         android:id="@+id/tv_detail_approveby"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="4"
+                        android:layout_weight="3.3"
                         android:textColor="@color/purple"
                         android:text="-"
                         android:layout_marginStart="5dp" />
 
-                    <ImageView
-                        android:id="@+id/btn_detail_followup"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/doc"
-                        android:layout_gravity="end"/>
+                    <LinearLayout
+                        android:id="@+id/btn_detail_list_followup"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/doc" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/purple"
+                            android:textSize="15sp"
+                            android:text="Laporan"/>
+
+                    </LinearLayout>
+
+
 
 
                 </LinearLayout>
@@ -219,7 +235,7 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/proximanova"
                     android:textColor="@color/purple"
-                    android:text="Lokasi Sumur:"/>
+                    android:text="Lokasi / Sumur:"/>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -394,35 +410,6 @@
                     android:textStyle="bold"
                     android:fontFamily="@font/proximanova"
                     android:textColor="@color/purple"
-                    android:text="Wilayah:"/>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="8dp"
-                    android:backgroundTint="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_detail_wilayah"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Bla bla bla"
-                        android:fontFamily="@font/proximanova"
-                        android:textColor="@color/purple"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginVertical="10dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/proximanova"
-                    android:textColor="@color/purple"
                     android:text="Status Laporan:"/>
 
                 <androidx.cardview.widget.CardView
@@ -444,158 +431,52 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+
+                <Button
+                    android:id="@+id/btn_detail_followup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/proximanova"
-                    android:textColor="@color/purple"
-                    android:text="Kecamatan:"/>
+                    android:layout_marginHorizontal="5dp"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:text="Follow Up"
+                    android:background="@drawable/green_gradient"/>
 
-                <androidx.cardview.widget.CardView
+                <Button
+                    android:id="@+id/btn_assignto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="8dp"
-                    android:backgroundTint="@color/white">
+                    android:layout_marginHorizontal="5dp"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:text="Assign To"
+                    android:background="@drawable/green_gradient"/>
 
-                    <TextView
-                        android:id="@+id/tv_detail_kecamatan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Bla bla bla"
-                        android:fontFamily="@font/proximanova"
-                        android:textColor="@color/purple"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginVertical="10dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
+                <Button
+                    android:id="@+id/btn_detail_takequest"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/proximanova"
-                    android:textColor="@color/purple"
-                    android:text="Kabupaten:"/>
+                    android:layout_marginHorizontal="5dp"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:text="Ambil Tugas Ini"/>
 
-                <androidx.cardview.widget.CardView
+                <Button
+                    android:id="@+id/btn_detail_finish"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="8dp"
-                    android:backgroundTint="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_detail_kabupaten"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Bla bla bla"
-                        android:fontFamily="@font/proximanova"
-                        android:textColor="@color/purple"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginVertical="10dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/proximanova"
-                    android:textColor="@color/purple"
-                    android:text="Propinsi:"/>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:cardCornerRadius="8dp"
-                    android:backgroundTint="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_detail_provinsi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Bla bla bla"
-                        android:fontFamily="@font/proximanova"
-                        android:textColor="@color/purple"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginVertical="10dp" />
-
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_followup"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_weight="1"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:textColor="@color/white"
-                        android:text="Follow Up"
-                        android:background="@drawable/green_gradient"/>
-
-                    <Button
-                        android:id="@+id/btn_assignto"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_weight="1"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/white"
-                        android:text="Assign To"
-                        android:background="@drawable/green_gradient"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_detail_takequest"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="5dp"
-                        android:visibility="gone"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
-                        android:text="Ambil Tugas Ini"/>
-
-                    <Button
-                        android:id="@+id/btn_detail_finish"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_weight="1"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginStart="5dp"
-                        android:textColor="@color/white"
-                        android:text="Selesai"/>
-
-                </LinearLayout>
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="5dp"
+                    android:textColor="@color/white"
+                    android:text="Selesai"/>
 
                 <Button
                     android:id="@+id/btn_detail_approve"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
+                    android:layout_marginHorizontal="5dp"
+                    android:textColor="@color/white"
                     android:text="Approve"/>
 
 

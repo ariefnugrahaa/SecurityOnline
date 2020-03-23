@@ -3,7 +3,7 @@ package com.example.arief.securityonline.network.presenter
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.network.model.FinishQuestModel
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,7 +16,6 @@ class PostFollowupQuestPresenter (iFollowupQuestView: BaseInterface.IPostFollowu
 
         val map: HashMap<String, String> = HashMap()
         map["idLaporan"] = DetailReportActivity.idLaporan.toString()
-        map["followupby"] = DetailReportActivity.username.toString()
         map["status"] = "5"
 
         return map

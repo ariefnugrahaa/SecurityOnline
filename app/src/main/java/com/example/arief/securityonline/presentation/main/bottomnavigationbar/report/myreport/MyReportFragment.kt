@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.myreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.myreport
 
 
 import android.annotation.SuppressLint
@@ -18,8 +18,8 @@ import com.example.arief.securityonline.extension.makeGone
 import com.example.arief.securityonline.extension.makeVisibile
 import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.network.`interface`.BaseInterface
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.extension.showToastErrorFromServer
 import com.pertamina.pdsi.securityonline.Model.HomeDataModel
 import kotlinx.android.synthetic.main.fragment_my_report.*
 import org.jetbrains.anko.support.v4.act
@@ -74,8 +74,7 @@ class MyReportFragment : Fragment(), BaseInterface.IMyReport {
 
                 try {
                     val textToFilter = et_search_myreport.text.toString().toLowerCase().trim()
-                    filteredData = loadData.filter { data ->
-                        data.tindakan.toLowerCase().contains(textToFilter)
+                    filteredData = loadData.filter { data -> data.motif.toLowerCase().contains(textToFilter)
                     }.toMutableList()
 
                     if (textToFilter.isNotEmpty()) {

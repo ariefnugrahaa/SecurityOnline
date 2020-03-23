@@ -130,37 +130,16 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <LinearLayout
-                    android:id="@+id/ln_rememberme"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="7">
-
                     <TextView
                         android:id="@+id/btn_signup"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:gravity="center"
                         android:textSize="17sp"
                         android:textStyle="bold"
                         android:text="Sign Up ?"
                         android:fontFamily="@font/proximanova"
                         android:textColor="#AADCCA"/>
-
-                    <TextView
-                        android:id="@+id/tv_forgetpassword"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:layout_weight="1"
-                        android:textSize="17sp"
-                        android:text="Forgot Password ?"
-                        android:fontFamily="@font/proximanova"
-                        android:textStyle="bold"
-                        android:textColor="#FF6F5E" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

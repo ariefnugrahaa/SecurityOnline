@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport
 
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface

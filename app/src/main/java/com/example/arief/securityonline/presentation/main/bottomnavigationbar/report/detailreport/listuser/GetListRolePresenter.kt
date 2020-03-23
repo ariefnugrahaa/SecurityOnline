@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.listuser
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.listuser
 
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface
@@ -13,8 +13,8 @@ class GetListRolePresenter (iListRoleView: BaseInterface.IGetListRole, iPostQues
     private val iListView = iListRoleView
     private val iPostQuest = iPostQuestView
 
-    fun getListReport(context: Context){
-        RestApi.create(context).getListRoleUsers().enqueue(object : Callback<ListRoleModel>{
+    fun getListReport(context: Context, IdRole: String){
+        RestApi.create(context).getListRoleUsers(IdRole).enqueue(object : Callback<ListRoleModel>{
             override fun onFailure(call: Call<ListRoleModel>, t: Throwable) {
                 iListView.onErrorGetListRole(t)
             }

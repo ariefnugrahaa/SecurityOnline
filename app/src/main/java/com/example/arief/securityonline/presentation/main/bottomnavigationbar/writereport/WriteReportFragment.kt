@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.writereport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.writereport
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -20,13 +20,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.arief.securityonline.ConstantCamera.pictureDialogItems
 import com.example.arief.securityonline.R
-import com.example.arief.securityonline.extension.checkETEmpty
-import com.example.arief.securityonline.extension.spinnerAdapterr
+import com.example.arief.securityonline.extension.*
 import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.network.presenter.WriteReportPresenter
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
-import com.example.arief.umkpdconline.common.showToastErrorLogin
-import com.example.arief.umkpdconline.common.showToastSuccessLogin
 import com.pertamina.pdsi.securityonline.Model.*
 import kotlinx.android.synthetic.main.fragment_write_report.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -41,28 +37,18 @@ import kotlin.collections.set
 @Suppress("DEPRECATION")
 class WriteReportFragment : Fragment(),
     BaseInterface.ICategory,
-    BaseInterface.IKabupaten,
-    BaseInterface.IKecamatan,
     BaseInterface.IMotif,
     BaseInterface.IProject,
-    BaseInterface.IProvinsi,
     BaseInterface.IRig,
     BaseInterface.IStatusRig,
-    BaseInterface.IWilayah,
     BaseInterface.IWritePresenter{
 
-    private val presenter by lazy {
-        GetSpinnerPresenter(
+    private val presenter by lazy { GetSpinnerPresenter(
             this,
             this,
             this,
             this,
-            this,
-            this,
-            this,
-            this,
-            this
-        )
+            this)
     }
 
     private val presenterWrite by lazy { WriteReportPresenter(this) }
@@ -77,25 +63,16 @@ class WriteReportFragment : Fragment(),
         var loadStatusRig: ListStatusRigModel? = null
         var loadProject: ListProjectModel? = null
         var loadMotif: ListMotifModel? = null
-        var loadProvinsi: ListProvinsiModel? = null
-        var loadKabupaten: ListKabupatenModel? = null
-        var loadKecamatan: ListKecamatanModel? = null
-        var loadWilayah: ListWilayahModel? = null
-
         var imageActive : Int ? = null
         var fileImage1: File? = null
         var fileImage2: File? = null
         var fileImage3: File? = null
 
         var idCategory = 0
-        var idMotif = 0
+        var idMotif = 1
         var idProject = 0
         var idRig = 0
         var idStatusRig = 0
-        var idProvinsi = 0
-        var idKabupaten = 0
-        var idKecamatan = 0
-        var idWilayah:String? = null
         var idSumur:String? = null
         var idSumber:String? = null
         var idPeristiwa:String? = null
@@ -109,6 +86,22 @@ class WriteReportFragment : Fragment(),
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val arraySumber = arrayOf("Pelapor Langsung", "Jabatan Sumber Pelapor")
+        val arrayLokasi = arrayOf("Kantor", "Lokasi Sumur", "Yard", "Nama Tempat")
+        val arrayPeristiwa = arrayOf("Kronologis / Situasi")
+
+        et_peristiwa.threshold = 0
+        et_peristiwa.setAdapter(act.ArrAdaper(arrayPeristiwa))
+        et_peristiwa.setOnFocusChangeListener { view, b -> if (b) et_sumber.showDropDown() }
+
+        et_lokasi_sumur.threshold = 0
+        et_lokasi_sumur.setAdapter(act.ArrAdaper(arrayLokasi))
+        et_lokasi_sumur.setOnFocusChangeListener { view, b -> if (b) et_sumber.showDropDown() }
+
+        et_sumber.threshold = 0
+        et_sumber.setAdapter(act.ArrAdaper(arraySumber))
+        et_sumber.setOnFocusChangeListener { view, b -> if (b) et_sumber.showDropDown() }
 
         btn_send_report.onClick {
 
@@ -134,20 +127,21 @@ class WriteReportFragment : Fragment(),
         }
 
         presenter.getCategory(act.applicationContext)
+        presenter.getMotif(act.applicationContext)
         presenter.getProject(act.applicationContext)
         presenter.getRig(act.applicationContext)
         presenter.getStatusRig(act.applicationContext)
-        presenter.getProvinsi(act.applicationContext)
-
         setImage()
 
     }
+
+
 
     private fun validateInput():Boolean{
 
         val status = true
 
-        if (idKabupaten ==0|| idCategory ==0|| idKecamatan ==0|| idMotif ==0|| idProject ==0|| idProvinsi ==0|| idRig ==0|| idStatusRig ==0|| idWilayah == "0"){ !status }
+        if (idProject ==0|| idRig ==0|| idStatusRig ==0){ !status }
 
         if (!checkETEmpty(et_lokasi_sumur, "Lokasi Sumur")){ !status }
         if (!checkETEmpty(et_sumber, "Sumber")){ !status }
@@ -159,6 +153,10 @@ class WriteReportFragment : Fragment(),
         return status
     }
 
+    private fun autoTextAdapter(arr: Array<String>){
+
+
+    }
 
     override fun onDataCompleteWriteReport(q: WriteReportModel) {
         if (q.responseCode == "00") {
@@ -302,7 +300,6 @@ class WriteReportFragment : Fragment(),
         spinnerMapKategori[0] = "0"
         listSpinner.add("Pilih Category-")
 
-
         for (i in q.responseData!!.indices){
             spinnerMapKategori[i+1] = q.responseData!![i].iDKategori.toString()
             listSpinner.add(q.responseData!![i].data)
@@ -315,9 +312,24 @@ class WriteReportFragment : Fragment(),
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if (p2 > 0) {
-                    idCategory = p2
-                    presenter.getMotif(act.applicationContext, idCategory.toString())
+                when (p2) {
+                    0 -> {
+                        idCategory = p2
+                        tv_motif.makeGone()
+                        spinner_motif.makeGone()
+                    }
+                    1 -> {
+                        idCategory = p2
+                        tv_motif.makeVisibile()
+                        spinner_motif.makeVisibile()
+//                        presenter.getMotif(act.applicationContext, idCategory.toString())
+                    }
+
+                    2 -> {
+                        idCategory = p2
+                        tv_motif.makeGone()
+                        spinner_motif.makeGone()
+                    }
                 }
             }
         }
@@ -327,60 +339,66 @@ class WriteReportFragment : Fragment(),
     //Motif Success
     override fun onDataCompleteMotif(q: ListMotifModel) {
 
-        loadMotif = q
+        try {
 
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
+            loadMotif = q
 
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Motif-")
+            val listSpinner: ArrayList<String> = ArrayList()
+            val spinnerMapKategori = hashMapOf<Int, String>()
 
-        for (i in q.responseData!!.indices){
-            spinnerMapKategori[i+1] = q.responseData!![i].iDMotif.toString()
-            listSpinner.add(q.responseData!![i].kategoriMotif)
-        }
+            spinnerMapKategori[0] = "0"
+            listSpinner.add("Pilih Motif-")
 
-        spinner_motif.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
+            for (i in q.responseData!!.indices) {
+                spinnerMapKategori[i + 1] = q.responseData!![i].iDMotif.toString()
+                listSpinner.add(q.responseData!![i].kategoriMotif)
+            }
 
-        spinner_motif.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) = Unit
+            spinner_motif.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if (p2 > 0) {
-                    idMotif = p2
-//                    presenter.getMotif(act.applicationContext, idMotif.toString())
+            spinner_motif.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) = Unit
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    when (p2) {
+                        0 -> idMotif = 1
+                        else -> idMotif = p2
+                    }
                 }
             }
-        }
+        } catch (e: Exception){ }
     }
 
     //Project Success
     override fun onDataCompleteProject(q: ListProjectModel) {
 
-        loadProject = q
+        try {
 
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
+            loadProject = q
 
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Project-")
+            val listSpinner: ArrayList<String> = ArrayList()
+            val spinnerMapKategori = hashMapOf<Int, String>()
 
-        for (i in q.responseData.indices){
-            spinnerMapKategori[i+1] = q.responseData[i].IDProject.toString()
-            listSpinner.add(q.responseData[i].data)
-        }
+            spinnerMapKategori[0] = "0"
+            listSpinner.add("Pilih Project-")
 
-        spinner_project.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_project.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            for (i in q.responseData.indices) {
+                spinnerMapKategori[i + 1] = q.responseData[i].IDProject.toString()
+                listSpinner.add(q.responseData[i].data)
             }
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                idProject = p2
-            }
-        }
+            spinner_project.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
 
+            spinner_project.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    idProject = p2
+
+                }
+            }
+        } catch (e: Exception) { }
     }
 
     //Rig Success
@@ -439,166 +457,23 @@ class WriteReportFragment : Fragment(),
         }
     }
 
-    //Provinsi Sukses
-    override fun onDataCompleteProvinsi(q: ListProvinsiModel) {
-
-        loadProvinsi = q
-
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
-
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Provinsi-")
-
-        for (i in q.responseData!!.indices){
-            spinnerMapKategori[i+1] = q.responseData!![i].iDPropinsi.toString()
-            listSpinner.add(q.responseData!![i].nama)
-        }
-
-        spinner_provinsi.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_provinsi.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if (p2 > 0) {
-                    idProvinsi = p2
-                    presenter.getKabupaten(act.applicationContext, idProvinsi.toString())
-                }
-            }
-        }
-    }
-
-    //Kabupaten Success
-    override fun onDataCompleteKabupaten(q: ListKabupatenModel) {
-
-        loadKabupaten = q
-
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
-
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Kabupaten-")
-
-        for (i in q.responseData.indices){
-            spinnerMapKategori[i+1] = q.responseData[i].iDKabKota.toString()
-            listSpinner.add(q.responseData[i].nama)
-        }
-
-        spinner_kabupaten.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_kabupaten.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if (p2 > 0){
-                    idKabupaten = p2
-                    presenter.getKecamatan(act.applicationContext, idKabupaten.toString())
-                }
-            }
-        }
-    }
-
-    //Kecamatan Success
-    override fun onDataCompleteKecamatan(q: ListKecamatanModel) {
-
-        loadKecamatan = q
-
-        val listSpinner = ArrayList<String>()
-        val spinnerMapKategori = hashMapOf<Int, String>()
-
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Kecamatan-")
-
-        for (i in q.responseData.indices){
-            spinnerMapKategori[i+1] = q.responseData[i].iDKecamatan.toString()
-            listSpinner.add(q.responseData[i].nama)
-        }
-
-        spinner_kecamatan.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_kecamatan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                try {
-                    if (p2 > 0){
-                        idKecamatan = p2
-                        presenter.getWilayah(act.applicationContext, idKecamatan.toString())
-                }
-                } catch (e: java.lang.Exception){}
-            }
-        }
-    }
-
-    //Wilayah Success
-    override fun onDataCompleteWilayah(q: ListWilayahModel) {
-
-        loadWilayah = q
-
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
-
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Wilayah-")
-
-        for (i in q.responseData.indices) {
-            spinnerMapKategori[i+1] = q.responseData[i].iDWilayah.toString()
-            listSpinner.add(q.responseData[i].nama)
-        }
-
-        spinner_wilayah.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_wilayah.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
-                try {
-                    if(p2 > 0){
-                        idWilayah = spinnerMapKategori[p2].toString()
-                    }
-                } catch (e: Exception){ }
-            }
-        }
-    }
-
-
-
-
     //Category Error
     override fun onDataErrorCategory(t: Throwable) = Unit
-
-    //Kabupaten Error
-    override fun onDataErrorKabupaten(t: Throwable) = Unit
-
-    //Kecamatan Error
-    override fun onDataErrorKecamatan(t: Throwable) = Unit
-
 
     //Motif Error
     override fun onDataErrorMotif(t: Throwable) = Unit
 
-
     //Project Error
     override fun onDataErrorProject(t: Throwable) = Unit
-
-    //Provinsi Error
-    override fun onDataErrorProvinsi(t: Throwable) = Unit
 
     //Rig Error
     override fun onDataErrorRig(t: Throwable) = Unit
 
     override fun onDataErrorStatusRig(t: Throwable) = Unit
 
-    override fun onDataErrorWilayah(t: Throwable) = Unit
-
     override fun onDataErrorReport(e: Throwable) {
         btn_send_report.revertAnimation()
+        act.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         act.showToastErrorFromServer("Report Error From Server")
     }
 

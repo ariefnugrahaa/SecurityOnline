@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.followup
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.followup
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -54,7 +54,7 @@ class FollowupActivity : AppCompatActivity(), BaseInterface.IFollow {
             }
         } catch (e: Exception) { }
 
-        }
+    }
 
     override fun onDataErrorFollow(t: Throwable) =  Unit
 

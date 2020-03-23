@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.allreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.allreport
 
 
 import android.annotation.SuppressLint
@@ -18,11 +18,11 @@ import com.example.arief.securityonline.adapter.RVLatestReport
 import com.example.arief.securityonline.extension.makeGone
 import com.example.arief.securityonline.extension.makeVisibile
 import com.example.arief.securityonline.network.presenter.GetListReportPresenter
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_EXTRA
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_SENDTINDAKAN_REPORT
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_STATUS_REPORT
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_EXTRA
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_SENDTINDAKAN_REPORT
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity.Companion.INTENT_STATUS_REPORT
+import com.example.arief.securityonline.extension.showToastErrorFromServer
 import com.pertamina.pdsi.securityonline.Model.HomeDataModel
 import kotlinx.android.synthetic.main.fragment_all_report.*
 import org.jetbrains.anko.support.v4.act

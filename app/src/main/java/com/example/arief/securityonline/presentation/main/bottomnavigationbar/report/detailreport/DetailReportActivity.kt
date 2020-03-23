@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,10 +7,15 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.request.RequestOptions
+import com.example.arief.securityonline.ConstantRole.ASISTEN_MANAGER
+import com.example.arief.securityonline.ConstantRole.DIAJUKAN
+import com.example.arief.securityonline.ConstantRole.DIKERJAKAN
+import com.example.arief.securityonline.ConstantRole.DILAPORKAN
+import com.example.arief.securityonline.ConstantRole.FOLLOWUP
 import com.example.arief.securityonline.ConstantRole.MANAGER
+import com.example.arief.securityonline.ConstantRole.SELESAI
 import com.example.arief.securityonline.R
-import com.example.arief.securityonline.extension.makeGone
-import com.example.arief.securityonline.extension.makeVisibile
+import com.example.arief.securityonline.extension.*
 import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.example.arief.securityonline.network.model.ApproveQuestModel
@@ -18,12 +23,10 @@ import com.example.arief.securityonline.network.model.FinishQuestModel
 import com.example.arief.securityonline.network.model.PostFollowupModel
 import com.example.arief.securityonline.network.model.TakeQuestModel
 import com.example.arief.securityonline.network.presenter.PostTableFollowupPresenter
-import com.example.arief.securityonline.presentation.home.MainActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.followup.FollowupActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.listuser.ListRoleActivity
+import com.example.arief.securityonline.presentation.main.MainActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.followup.FollowupActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.listuser.ListRoleActivity
 import com.example.arief.umkpdconline.common.showSnackbarSuccess
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
-import com.example.arief.umkpdconline.common.showToastSuccessLogin
 import com.glide.slider.library.SliderLayout
 import com.glide.slider.library.animations.DescriptionAnimation
 import com.glide.slider.library.slidertypes.BaseSliderView
@@ -62,7 +65,6 @@ class DetailReportActivity : AppCompatActivity(),
     private val approvePresenter by lazy { PostApprovePresenter(this)}
 
     // Global Variable
-
     private val sharedPreference by lazy { SharedPrefManager.getInstance(this) }
     private var loadData = mutableListOf<HomeDataModel.ResponseData>()
     lateinit var mAlertDialog: AlertDialog
@@ -95,37 +97,65 @@ class DetailReportActivity : AppCompatActivity(),
         presenter.getDetailReport(this, getExtra.toString())
 
         //Manager
-        if (getRole == MANAGER && getStatusReport == 1){
+        if (getRole == MANAGER && getStatusReport == DILAPORKAN){
             btn_detail_finish.makeVisibile()
             btn_assignto.makeVisibile()
             btn_detail_approve.makeVisibile()
         }
 
-        if (getRole == MANAGER && getStatusReport == 2){
+        if (getRole == MANAGER && getStatusReport == DIAJUKAN){
             btn_detail_finish.makeVisibile()
             btn_detail_approve.makeVisibile()
         }
 
-        if (getRole == MANAGER && getStatusReport == 4){
-            btn_followup.makeVisibile()
+        if (getRole == MANAGER && getStatusReport == SELESAI){
+            btn_detail_followup.makeVisibile()
             btn_detail_approve.makeVisibile()
         }
 
-        if (getRole == MANAGER && getStatusReport == 5){
-            btn_followup.makeVisibile()
+        if (getRole == MANAGER && getStatusReport == FOLLOWUP){
+            btn_detail_followup.makeVisibile()
             btn_detail_approve.makeVisibile()
         }
 
-        if (username == getTindakan && getStatusReport == 2){
+        //ASISTEN MANAGER
+        if (getRole == ASISTEN_MANAGER && getStatusReport == DILAPORKAN){
+            btn_detail_finish.makeVisibile()
+            btn_assignto.makeVisibile()
+            btn_detail_approve.makeVisibile()
+        }
+
+        if (getRole == ASISTEN_MANAGER && getStatusReport == DIAJUKAN){
+            btn_detail_finish.makeVisibile()
+            btn_detail_approve.makeVisibile()
+        }
+
+        if (getRole == ASISTEN_MANAGER && getStatusReport == SELESAI){
+            btn_detail_followup.makeVisibile()
+            btn_detail_approve.makeVisibile()
+        }
+
+        if (getRole == ASISTEN_MANAGER && getStatusReport == FOLLOWUP){
+            btn_detail_followup.makeVisibile()
+            btn_detail_approve.makeVisibile()
+        }
+
+
+        if (username == getTindakan && getStatusReport == DIAJUKAN){
             btn_detail_takequest.makeVisibile()
         }
 
-        if (username == getTindakan && getStatusReport == 3){
+        if (username == getTindakan && getStatusReport == DIAJUKAN && getRole == ASISTEN_MANAGER){
+            btn_assignto.makeVisibile()
+            btn_detail_takequest.makeVisibile()
+        }
+
+        if (username == getTindakan && getStatusReport == DIKERJAKAN){
             btn_detail_takequest.makeGone()
             btn_detail_finish.makeVisibile()
         }
 
-        if (username == getTindakan && getStatusReport == 5){
+        if (username == getTindakan && getStatusReport == FOLLOWUP){
             btn_detail_finish.makeVisibile()
         }
 
@@ -137,7 +167,7 @@ class DetailReportActivity : AppCompatActivity(),
             startActivity(intent)
         }
 
-        btn_followup.setOnClickListener {
+        btn_detail_followup.setOnClickListener {
 
             val intent = Intent(this, ListRoleActivity::class.java).apply {
                 putExtra(ListRoleActivity.INTENT_IDLAPORAN, getExtra)
@@ -149,7 +179,7 @@ class DetailReportActivity : AppCompatActivity(),
         btn_detail_takequest.setOnClickListener {
 
             MaterialDialog.Builder(this)
-                .setTitle("Pilih Security")
+                .setTitle("Ambil Tugas")
                 .setMessage("Anda ingin mengambil tugas ini?")
                 .setCancelable(false)
                 .setPositiveButton("Ya", R.drawable.ic_check) { dialogInterface, _ ->
@@ -175,25 +205,32 @@ class DetailReportActivity : AppCompatActivity(),
 
             mDialogView.btn_addnote.setOnClickListener {
 
-                tindakanPenyelesaian = mDialogView.et_followup_tindakanpenyelesaian.text.toString()
-                kerugian = mDialogView.et_followup_kerugian.text.toString()
+                val followupTindakan = mDialogView.et_followup_tindakanpenyelesaian.text.toString()
+                val followupKerugian = mDialogView.et_followup_kerugian.text.toString()
 
-                finishReportPresenter.finishQuest(this)
-                tablefollowupPresenter.postTableFollowup(this)
+                if (followupTindakan.isEmpty() || followupKerugian.isEmpty()){
+                    showToastErrorRegister("Tolong Lengkapi Data")
+                } else {
+                    tindakanPenyelesaian = followupTindakan
+                    kerugian = followupKerugian
+
+                    finishReportPresenter.finishQuest(this)
+                    tablefollowupPresenter.postTableFollowup(this)
+                }
 
             }
         }
 
-        btn_detail_approve.setOnClickListener {
-            approvePresenter.postApprove(this)
-        }
-
-        btn_detail_followup.setOnClickListener {
+        btn_detail_list_followup.setOnClickListener {
             val intent = Intent(this, FollowupActivity::class.java).apply {
                 putExtra(FollowupActivity.INTENT_ID_FOLLOWUP, getExtra)
             }
             startActivity(intent)
 
+        }
+
+        btn_detail_approve.setOnClickListener {
+            approvePresenter.postApprove(this)
         }
     }
 
@@ -202,8 +239,8 @@ class DetailReportActivity : AppCompatActivity(),
         loadData = q.responseData.toMutableList()
 
             try {
-
-                tv_detail_approveby.text = q.responseData[0].FollowupBy
+                tv_detail_head_peristiwa.text = q.responseData[0].peristiwa
+                tv_detail_approveby.text = q.responseData[0].ApproveBy
                 tv_detail_takeby.text = q.responseData[0].TakeBy
                 tv_detail_tanggalmasuk.text = q.responseData[0].tanggalMasuk
                 tv_detail_userid.text = q.responseData[0].userID
@@ -214,12 +251,7 @@ class DetailReportActivity : AppCompatActivity(),
                 tv_detail_rig.text = q.responseData[0].rig
                 tv_detail_motif.text = q.responseData[0].motif
                 tv_detail_project.text = q.responseData[0].project
-                tv_detail_wilayah.text = q.responseData[0].wilayah
                 tv_detail_statuslaporan.text = q.responseData[0].statusLaporan
-                tv_detail_kecamatan.text = q.responseData[0].kecamatan
-                tv_detail_kabupaten.text = q.responseData[0].kabupaten
-                tv_detail_provinsi.text = q.responseData[0].propinsi
-
 
                 val listUrl = loadData[0].foto!!.toMutableList()
 

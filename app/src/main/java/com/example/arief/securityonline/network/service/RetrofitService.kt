@@ -14,22 +14,18 @@ interface RetrofitService {
         const val POST_REGISTER = "/api/auth/signup"
 
         //Spinner
-        const val GET_CATEGORY  = "api/master/category"
-        const val GET_MOTIF     = "api/master/motif"
+        const val GET_CATEGORY  = "/api/master/category"
+        const val GET_MOTIF     = "/api/master/motif"
         const val GET_RIG       = "/api/master/rig"
         const val GET_STATUSRIG = "/api/master/status-rig"
         const val GET_PROJECT   = "/api/master/project"
-        const val GET_PROVINSI  = "/api/master/province"
-        const val GET_KABUPATEN = "/api/master/districts"
-        const val GET_KECAMATAN = "/api/master/sub-districts"
-        const val GET_WILAYAH   = "/api/master/area"
 
         //Report
         const val GET_LATEST = "/api/reports/latest"
         const val GET_DETAIL = "/api/reports/detail"
         const val GET_MYREPORT = "/api/reports/your-report"
         const val POST_WRITE = "/api/reports/write-report"
-        const val GET_LIST_USERS = "/api/user/users/S"
+        const val GET_LIST_USERS = "/api/user/users/"
 
         //Detail
         const val GET_QUESTREPORT =  "/api/reports/your-quest"
@@ -48,7 +44,6 @@ interface RetrofitService {
 
     }
 
-
     //Auth
     @FormUrlEncoded
     @POST(POST_LOGIN)
@@ -58,14 +53,12 @@ interface RetrofitService {
     @POST(POST_REGISTER)
     fun postRegister(@Body params: MutableMap<String, String>): Call<LoginModel>
 
-
     //Spinner
     @GET(GET_CATEGORY)
     fun getCategory(): Call<ListCategoryModel>
 
-
     @GET(GET_MOTIF)
-    fun getMotif(@Query("IDMotif")IDMotif: String): Call<ListMotifModel>
+    fun getMotif(): Call<ListMotifModel>
 
     @GET(GET_RIG)
     fun getRig(): Call<ListRigModel>
@@ -76,23 +69,10 @@ interface RetrofitService {
     @GET(GET_PROJECT)
     fun getProject(): Call<ListProjectModel>
 
-    @GET(GET_PROVINSI)
-    fun getProvinsi(): Call<ListProvinsiModel>
-
-    @GET(GET_KABUPATEN)
-    fun getKabupaten(@Query("kode")kode: String): Call<ListKabupatenModel>
-
-    @GET(GET_KECAMATAN)
-    fun getKecamatan(@Query("kode")kode: String): Call<ListKecamatanModel>
-
-    @GET(GET_WILAYAH)
-    fun getWilayah(@Query("kode")kode: String): Call<ListWilayahModel>
-
     @Multipart
     @POST(POST_WRITE)
     fun postWrite(@Part fileMap: MutableList<@JvmSuppressWildcards MultipartBody.Part> ,
-                  @PartMap map: Map<String, @JvmSuppressWildcards RequestBody >): Call<WriteReportModel>
-
+                  @PartMap map: Map<String, @JvmSuppressWildcards RequestBody>): Call<WriteReportModel>
 
     //Report
     @POST(POST_FOLLOWUP_TBFOLLOWUP)
@@ -114,7 +94,7 @@ interface RetrofitService {
     fun postApproveQuest(@Body params: MutableMap<String, String>): Call<ApproveQuestModel>
 
     @GET(GET_LIST_USERS)
-    fun getListRoleUsers(): Call<ListRoleModel>
+    fun getListRoleUsers(@Query("IdRole")IdRole: String): Call<ListRoleModel>
 
     @GET(GET_PROFIL)
     fun getProfile(): Call<UserDataModel>
@@ -131,11 +111,8 @@ interface RetrofitService {
     @GET(GET_DETAIL)
     fun getDetailReport(@Query("IDLaporan")iDLaporan: String): Call<HomeDataModel>
 
-
     @GET(GET_FOLLOWUP)
     fun getFollowup(@Query("IdLaporan") IdLaporan: String): Call<ListFollowUp>
-
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.myreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.questreport
 
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface
@@ -7,18 +7,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GetMyReportPresenter(iMyReportView: BaseInterface.IMyReport) {
+class GetQuestReportPresenter(iQuestReportView: BaseInterface.IGetQuestReport) {
 
-    private var iView = iMyReportView
+    private var iView = iQuestReportView
 
     fun getMyReport(context: Context, userId: String){
-        RestApi.create(context).getMyreport(userId).enqueue(object : Callback<HomeDataModel>{
+        RestApi.create(context).getQuestReport(userId).enqueue(object : Callback<HomeDataModel>{
             override fun onFailure(call: Call<HomeDataModel>, t: Throwable) {
-                iView.onErrorMyReport(t)
+                iView.onErrorGetQuestReport(t)
             }
 
             override fun onResponse(call: Call<HomeDataModel>, response: Response<HomeDataModel>) {
-                iView.onDataCompleteMyReport(response.body() as HomeDataModel)
+                iView.onDataCompleteGetQuestReport(response.body() as HomeDataModel)
             }
         })
     }

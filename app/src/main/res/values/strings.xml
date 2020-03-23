@@ -5,7 +5,31 @@
     <string name="title_notifications">Notifications</string>
     <string name="searchview">Cari Disini</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="sumber_informasi">
+        <item>Pelapor Langsung</item>
+        <item>Jabatan Sumber Pelapor</item>
+    </string-array>
+
+    <string-array name="lokasi_sumur">
+        <item>Kantor</item>
+        <item>Lokasi Sumur</item>
+        <item>Yard</item>
+        <item>Nama Tempat</item>
+        <item>Jalan</item>
+    </string-array>
+
+    <string-array name="peristiwa">
+        <item>Kronologis / Situasi</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_report">Create Report</string>
+
+
+
+
+
+
+
+
 </resources>

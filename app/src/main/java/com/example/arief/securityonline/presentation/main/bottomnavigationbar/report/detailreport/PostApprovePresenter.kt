@@ -1,10 +1,8 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport
 
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.network.model.ApproveQuestModel
-import com.example.arief.securityonline.network.model.PostFollowupModel
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,6 +15,7 @@ class PostApprovePresenter (iApproveView: BaseInterface.IApproveQuest){
 
         val map: HashMap<String, String> = HashMap()
         map["idLaporan"] = DetailReportActivity.idLaporan.toString()
+        map["approveby"] = DetailReportActivity.username.toString()
         map["status"] = "6"
 
         return map

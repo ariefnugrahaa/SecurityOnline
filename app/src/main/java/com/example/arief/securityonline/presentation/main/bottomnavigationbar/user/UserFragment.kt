@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.user
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.user
 
 import android.annotation.SuppressLint
 import android.content.Intent

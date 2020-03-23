@@ -3,7 +3,7 @@ package com.example.arief.securityonline.network.presenter
 import android.content.Context
 import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.network.model.PostFollowupModel
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

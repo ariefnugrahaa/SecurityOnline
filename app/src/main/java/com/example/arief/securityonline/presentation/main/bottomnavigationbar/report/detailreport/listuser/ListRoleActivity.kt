@@ -1,4 +1,4 @@
-package com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.listuser
+package com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.listuser
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,20 +9,16 @@ import com.example.arief.securityonline.network.`interface`.BaseInterface
 import com.example.arief.securityonline.adapter.RVListUsers
 import com.example.arief.securityonline.network.model.FinishQuestModel
 import com.example.arief.securityonline.network.model.ListRoleModel
-import com.example.arief.securityonline.network.model.PostFollowupModel
 import com.example.arief.securityonline.network.model.SendQuestModel
 import com.example.arief.securityonline.network.presenter.PostFollowupQuestPresenter
-import com.example.arief.securityonline.presentation.home.MainActivity
-import com.example.arief.securityonline.presentation.home.bottomnavigationbar.report.detailreport.DetailReportActivity
+import com.example.arief.securityonline.presentation.main.MainActivity
 import com.example.arief.umkpdconline.common.showSnackbarSuccess
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
-import com.example.arief.umkpdconline.common.showToastErrorRegister
-import com.example.arief.umkpdconline.common.showToastSuccessRegister
+import com.example.arief.securityonline.extension.showToastErrorRegister
+import com.example.arief.securityonline.extension.showToastSuccessRegister
+import com.example.arief.securityonline.network.database.SharedPrefManager
 import com.shreyaspatil.MaterialDialog.MaterialDialog
 import kotlinx.android.synthetic.main.activity_list_role.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 
 class ListRoleActivity : AppCompatActivity(),
                         BaseInterface.IGetListRole,
@@ -34,9 +30,9 @@ class ListRoleActivity : AppCompatActivity(),
     private val presenter by lazy { GetListRolePresenter(this, this) }
     private val followupReportPresenter by lazy { PostFollowupQuestPresenter(this) }
 
-
     //Local Variable
     private lateinit var rvListRole:RVListUsers
+    private val sharedPreference by lazy { SharedPrefManager.getInstance(this) }
 
     companion object {
         const val INTENT_IDLAPORAN = "INTENT.ID"
@@ -51,11 +47,13 @@ class ListRoleActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_role)
 
-
         val getStatus = intent.getIntExtra(INTENT_STATUS, 0)
+        val getRole = sharedPreference.getValueRole("Role").toString()
 
-
-        presenter.getListReport(this)
+        when (getRole){
+            "M" -> presenter.getListReport(this, "ALL")
+            "AM" -> presenter.getListReport(this, "S")
+        }
 
         rvListRole = RVListUsers { position ->
 
@@ -67,12 +65,12 @@ class ListRoleActivity : AppCompatActivity(),
                 .setMessage("Anda ingin menunjuk ${loadData[position].userID} sebagai security ?")
                 .setCancelable(false)
                 .setPositiveButton("Ya", R.drawable.ic_check) { dialogInterface, _ ->
+
                     getUser = loadData[position].userID
 
                     if (getStatus == 4) {
                         presenter.postSendQuest(this)
                         followupReportPresenter.followupQuest(this)
-                        toast("This is followup")
                         dialogInterface.dismiss()
                         startActivity<MainActivity>()
                         finish()
@@ -80,7 +78,6 @@ class ListRoleActivity : AppCompatActivity(),
                     } else {
 
                         presenter.postSendQuest(this)
-                        toast("this is send biasa")
                         dialogInterface.dismiss()
                         startActivity<MainActivity>()
                         finish()

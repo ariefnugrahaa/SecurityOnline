@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.arief.securityonline.R
 import com.example.arief.securityonline.extension.checkETRegisterEmpty
 import com.example.arief.securityonline.presentation.auth.login.LoginActivity
-import com.example.arief.umkpdconline.common.showToastErrorFromServer
-import com.example.arief.umkpdconline.common.showToastErrorRegister
-import com.example.arief.umkpdconline.common.showToastSuccessRegister
+import com.example.arief.securityonline.extension.showToastErrorFromServer
+import com.example.arief.securityonline.extension.showToastErrorRegister
+import com.example.arief.securityonline.extension.showToastSuccessRegister
 import com.pertamina.pdsi.securityonline.Model.LoginModel
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.sdk25.coroutines.onClick

@@ -66,8 +66,8 @@ data class HomeDataModel(
         var userUpdate: String,
         @SerializedName("wilayah")
         var wilayah: String, // LABUHAN BAKTI
-        @SerializedName("FollowupBy")
-        var FollowupBy: String,
+        @SerializedName("ApproveBy")
+        var ApproveBy: String,
         @SerializedName("TakeBy")
         var TakeBy: String,
         @SerializedName("SendTindakan")
