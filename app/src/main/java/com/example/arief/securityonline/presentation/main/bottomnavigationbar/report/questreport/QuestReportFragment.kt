@@ -78,7 +78,7 @@ class QuestReportFragment : Fragment(), BaseInterface.IGetQuestReport {
 
                 try {
                     val textToFilter = et_search_questreport.text.toString().toLowerCase().trim()
-                    filteredData = loadData.filter { data -> data.tindakan.toLowerCase().contains(textToFilter)
+                    filteredData = loadData.filter { data -> data.motif.toLowerCase().contains(textToFilter)
                     }.toMutableList()
 
                     if (textToFilter.isNotEmpty()) {
@@ -107,9 +107,9 @@ class QuestReportFragment : Fragment(), BaseInterface.IGetQuestReport {
 
             if (loadData.isNullOrEmpty()){
                 lottie_quest.makeVisibile()
+                cv_quest_searchview.makeGone()
                 lottie_quest.setAnimation("notfound.json")
                 lottie_quest.playAnimation()
-                cv_quest_searchview.makeGone()
             } else {
                 rv_quest.apply {
                     rvAdapter.setData(loadData)

@@ -72,7 +72,7 @@ class AllReportFragment : Fragment(), BaseInterface.IListReportLatest {
 
                 try {
                     val textToFilter = et_search_allreport.text.toString().toLowerCase().trim()
-                    filteredData = loadData.filter { data -> data.tindakan.toLowerCase().contains(textToFilter) }.toMutableList()
+                    filteredData = loadData.filter { data -> data.motif.toLowerCase().contains(textToFilter) }.toMutableList()
 
                     if (textToFilter.isNotEmpty()) {
                         rvLatest.setData(filteredData)

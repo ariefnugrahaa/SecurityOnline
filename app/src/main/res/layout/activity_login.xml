@@ -80,7 +80,7 @@
                         android:textColor="@color/white"
                         android:drawablePadding="5dp"
                         android:drawableStart="@drawable/item1edit_email"
-                        android:hint="Email" />
+                        android:hint="Username" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

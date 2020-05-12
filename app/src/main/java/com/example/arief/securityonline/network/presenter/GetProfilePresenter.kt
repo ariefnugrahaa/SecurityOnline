@@ -12,15 +12,15 @@ class GetProfilePresenter(iViewUser: BaseInterface.IUser) {
 
     private val iUser = iViewUser
 
-    fun postData(context: Context) {
-        RestApi.create(context).getProfile().enqueue(object : Callback<UserDataModel> {
-            override fun onFailure(call: Call<UserDataModel>, t: Throwable) {
-                iUser.onErrorCompleteUser(t)
-            }
-
-            override fun onResponse(call: Call<UserDataModel>, response: Response<UserDataModel>) {
-                iUser.onDataCompleteUser(response.body() as UserDataModel)
-            }
-        })
-    }
+//    fun postData(context: Context) {
+//        RestApi.create(context).getProfile().enqueue(object : Callback<UserDataModel> {
+//            override fun onFailure(call: Call<UserDataModel>, t: Throwable) {
+//                iUser.onErrorCompleteUser(t)
+//            }
+//
+//            override fun onResponse(call: Call<UserDataModel>, response: Response<UserDataModel>) {
+//                iUser.onDataCompleteUser(response.body() as UserDataModel)
+//            }
+//        })
+//    }
 }

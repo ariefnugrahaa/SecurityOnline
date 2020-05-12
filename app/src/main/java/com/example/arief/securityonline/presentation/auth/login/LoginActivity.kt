@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                 sharedPreference.saveEmail(q.responseData!!.email)
 
                 btn_login.revertAnimation()
-                startActivity<IntroActivity>()
+                startActivity<MainActivity>()
                 finish()
 
             }
@@ -121,7 +121,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
             )
 
-            if (!emailLogin() && !emailPassword()) {
+            if (!emailLogin() || !emailPassword()) {
                 showToastErrorLogin("Harap lengkapi Data")
             } else {
                 btn_login.startAnimation()

@@ -30,7 +30,7 @@
         <activity android:name="com.example.arief.securityonline.presentation.main.bottomnavigationbar.report.detailreport.listuser.ListRoleActivity" />
         <activity android:name=".presentation.main.bottomnavigationbar.report.detailreport.DetailReportActivity" />
         <activity
-            android:name=".presentation.auth.login.LoginActivity"
+            android:name=".presentation.splash.SplashScreenActivity"
             android:launchMode="singleTask" />
         <activity android:name=".presentation.auth.resetpassword.ResetPasswordActivity" />
         <activity android:name=".presentation.auth.register.RegisterActivity" />
@@ -38,7 +38,7 @@
             android:name=".presentation.main.MainActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".presentation.splash.SplashScreenActivity"
+            android:name=".presentation.auth.login.LoginActivity"
             android:label="@string/app_name"
             android:noHistory="true">
             <intent-filter>

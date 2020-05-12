@@ -64,7 +64,6 @@ class MyReportFragment : Fragment(), BaseInterface.IMyReport {
                 putExtra(DetailReportActivity.INTENT_STATUS_REPORT, filteredData[position].status)
             }
             startActivity(intent)
-            act.finish()
         }
 
         //Searching

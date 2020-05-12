@@ -271,16 +271,11 @@ class DetailReportActivity : AppCompatActivity(),
                 iv_detail.setPresetTransformer(SliderLayout.Transformer.Accordion)
                 iv_detail.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom)
                 iv_detail.setCustomAnimation(DescriptionAnimation())
-                iv_detail.setDuration(4000)
+                iv_detail.setDuration(15000)
                 iv_detail.addOnPageChangeListener(this)
                 iv_detail.stopCyclingWhenTouch(false)
 
             } catch (e: Exception) { }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
     }
 
     override fun onDataCompleteFollowup(q: PostFollowupModel) {

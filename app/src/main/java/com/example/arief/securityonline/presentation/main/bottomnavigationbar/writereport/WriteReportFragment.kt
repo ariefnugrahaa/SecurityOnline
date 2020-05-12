@@ -1,11 +1,14 @@
 package com.example.arief.securityonline.presentation.main.bottomnavigationbar.writereport
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.MediaStore.Images.Media.DATA
@@ -63,7 +66,7 @@ class WriteReportFragment : Fragment(),
         var loadStatusRig: ListStatusRigModel? = null
         var loadProject: ListProjectModel? = null
         var loadMotif: ListMotifModel? = null
-        var imageActive : Int ? = null
+        var imageActive: Int ? = null
         var fileImage1: File? = null
         var fileImage2: File? = null
         var fileImage3: File? = null
@@ -93,11 +96,11 @@ class WriteReportFragment : Fragment(),
 
         et_peristiwa.threshold = 0
         et_peristiwa.setAdapter(act.ArrAdaper(arrayPeristiwa))
-        et_peristiwa.setOnFocusChangeListener { view, b -> if (b) et_sumber.showDropDown() }
+        et_peristiwa.setOnFocusChangeListener { view, b -> if (b) et_peristiwa.showDropDown() }
 
         et_lokasi_sumur.threshold = 0
         et_lokasi_sumur.setAdapter(act.ArrAdaper(arrayLokasi))
-        et_lokasi_sumur.setOnFocusChangeListener { view, b -> if (b) et_sumber.showDropDown() }
+        et_lokasi_sumur.setOnFocusChangeListener { view, b -> if (b) et_lokasi_sumur.showDropDown() }
 
         et_sumber.threshold = 0
         et_sumber.setAdapter(act.ArrAdaper(arraySumber))
@@ -195,7 +198,7 @@ class WriteReportFragment : Fragment(),
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        val bitmap: Bitmap?
+        var bitmap: Bitmap?
 
         if (requestCode == GALLERY){
             if (data != null){
@@ -222,28 +225,30 @@ class WriteReportFragment : Fragment(),
                 } catch (e: Exception){ }
             }
         } else if (requestCode == CAMERA) {
+                if (data != null) {
+                    bitmap = data.extras?.get("data") as Bitmap
+                    imageViewActive!!.setImageBitmap(bitmap)
 
-            if (data != null) {
-                bitmap = data.extras?.get("data") as Bitmap
-                imageViewActive!!.setImageBitmap(bitmap)
 
-                val contentURI = getImageUri(act.applicationContext, bitmap)
-                val filePath = arrayOf(DATA)
-                val c: Cursor = act.contentResolver.query(contentURI, filePath, null, null, null)!!
-                c.moveToFirst()
-                val columnIndex: Int = c.getColumnIndex(filePath[0])
-                val filePathStr = c.getString(columnIndex)
-                c.close()
+                        val contentURI = getImageUri(act.applicationContext, bitmap)
+                        val filePath = arrayOf(DATA)
+                        val c: Cursor = act.contentResolver.query(contentURI, filePath, null, null, null)!!
+                        c.moveToFirst()
+                        val columnIndex: Int = c.getColumnIndex(filePath[0])
+                        val filePathStr = c.getString(columnIndex)
+                        c.close()
 
-                if (imageActive == 1) {
-                    fileImage1 = File(filePathStr)
-                }
-                if (imageActive == 2) {
-                    fileImage2 = File(filePathStr)
-                }
-                if (imageActive == 3) {
-                    fileImage3 = File(filePathStr)
-                }
+                     try {
+                        if (imageActive == 1) {
+                            fileImage1 = File(filePathStr)
+                        }
+                        if (imageActive == 2) {
+                            fileImage2 = File(filePathStr)
+                        }
+                        if (imageActive == 3) {
+                            fileImage3 = File(filePathStr)
+                        }
+                    } catch (e: Exception) { }
             }
         }
     }
@@ -282,8 +287,14 @@ class WriteReportFragment : Fragment(),
     }
 
     private fun takePhotoFromCamera() {
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, CAMERA)
+        if (EasyPermissions.hasPermissions(act.applicationContext, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(cameraIntent, CAMERA)
+        }else {
+            EasyPermissions.requestPermissions(this, "Aplikasi ini membutuhkan izin anda untuk membuka CAMERA", CAMERA,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        }
     }
 
 
@@ -404,57 +415,63 @@ class WriteReportFragment : Fragment(),
     //Rig Success
     override fun onDataCompleteRig(q: ListRigModel) {
 
-        loadRig = q
+        try {
 
-        val listSpinner:ArrayList<String> = ArrayList()
-        val spinnerMapKategori = hashMapOf<Int, String>()
+            loadRig = q
 
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Rig-")
+            val listSpinner: ArrayList<String> = ArrayList()
+            val spinnerMapKategori = hashMapOf<Int, String>()
 
-        for (i in q.responseData!!.indices){
-            spinnerMapKategori[i+1] = q.responseData!![i].iDRig.toString()
-            listSpinner.add(q.responseData!![i].namaRig)
-        }
+            spinnerMapKategori[0] = "0"
+            listSpinner.add("Pilih Rig-")
 
-        spinner_rig.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_rig.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            for (i in q.responseData!!.indices) {
+                spinnerMapKategori[i + 1] = q.responseData!![i].iDRig.toString()
+                listSpinner.add(q.responseData!![i].namaRig)
             }
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                idRig = p2
+            spinner_rig.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
+
+            spinner_rig.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    idRig = p2
+                }
             }
-        }
+        } catch (e: Exception){ }
     }
 
     //StatusRig Success
     override fun onDataCompleteStatusRig(q: ListStatusRigModel) {
 
-        loadStatusRig = q
+        try {
 
-        val listSpinner = ArrayList<String>()
-        val spinnerMapKategori = hashMapOf<Int, String>()
+            loadStatusRig = q
 
-        spinnerMapKategori[0] = "0"
-        listSpinner.add("Pilih Status Rig-")
+            val listSpinner = ArrayList<String>()
+            val spinnerMapKategori = hashMapOf<Int, String>()
 
-        for (i in q.responseData.indices){
-            spinnerMapKategori[i+1] = q.responseData[i].iDStatusRig.toString()
-            listSpinner.add(q.responseData[i].status)
-        }
+            spinnerMapKategori[0] = "0"
+            listSpinner.add("Pilih Status Rig-")
 
-        spinner_statusrig.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
-
-        spinner_statusrig.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
+            for (i in q.responseData.indices) {
+                spinnerMapKategori[i + 1] = q.responseData[i].iDStatusRig.toString()
+                listSpinner.add(q.responseData[i].status)
             }
 
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                idStatusRig = p2
+            spinner_statusrig.adapter = spinnerAdapterr(act.applicationContext, listSpinner)
+
+            spinner_statusrig.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    idStatusRig = p2
+                }
             }
-        }
+        } catch (e: Exception){ }
     }
 
     //Category Error
@@ -477,6 +494,13 @@ class WriteReportFragment : Fragment(),
         act.showToastErrorFromServer("Report Error From Server")
     }
 
+     private fun checkPermissionForReadExtertalStorage():Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val result:Int = context!!.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            return result == PackageManager.PERMISSION_GRANTED
+        }
+        return false
+    }
 
 
 

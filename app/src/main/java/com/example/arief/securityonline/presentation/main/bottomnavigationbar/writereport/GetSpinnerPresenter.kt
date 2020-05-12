@@ -1,10 +1,15 @@
 package com.example.arief.securityonline.presentation.main.bottomnavigationbar.writereport
 
+import RestApi
 import android.content.Context
+import android.widget.Toast
 import com.example.arief.securityonline.network.`interface`.BaseInterface
+import com.google.gson.GsonBuilder
 import com.pertamina.pdsi.securityonline.Model.*
 import retrofit2.Call
 import retrofit2.Response
+import java.lang.Exception
+
 
 class GetSpinnerPresenter(iViewCategory: BaseInterface.ICategory,
                           iViewMotif: BaseInterface.IMotif,
@@ -29,7 +34,7 @@ class GetSpinnerPresenter(iViewCategory: BaseInterface.ICategory,
 
             override fun onResponse(call: Call<ListCategoryModel>, response: Response<ListCategoryModel>) {
                 iCategory.onDataCompleteCategory(response.body() as ListCategoryModel)
-            }
+                }
         })
     }
 
@@ -74,7 +79,6 @@ class GetSpinnerPresenter(iViewCategory: BaseInterface.ICategory,
             override fun onFailure(call: Call<ListStatusRigModel>, t: Throwable) {
                 iStatusRig.onDataErrorStatusRig(t)
             }
-
             override fun onResponse(call: Call<ListStatusRigModel>, response: Response<ListStatusRigModel>) {
                 iStatusRig.onDataCompleteStatusRig(response.body() as ListStatusRigModel)
             }

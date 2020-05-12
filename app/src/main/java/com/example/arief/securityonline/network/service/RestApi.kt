@@ -31,8 +31,8 @@ class RestApi {
             val gson = GsonBuilder().setLenient().create()
 
             val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl("https://apps.pertamina.com/pdsidas/apisecurity/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://apps.pertamina.com/")
                 .client(client)
                 .build()
             return retrofit.create(RetrofitService::class.java)
